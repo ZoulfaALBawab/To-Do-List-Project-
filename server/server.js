@@ -29,28 +29,33 @@ app.post('/api/tasks' , (req,res){
 		})
 })
 
-//To call value we already have 
-app.get ('/api/tasks',(req,res) => {
-	const tasks = [
-	{date :'14/4', day :'Sun',task1 :'code',task2:'read',task3:'watchVideo'}
-	];
+//To call value we already have
+// the obj.s only for test  
+//Either:
+// app.get ('/api/tasks',(req,res) => {
+// 	const tasks = [
+// 	{date :'14/4', day :'Sun',task1 :'code',task2:'read',task3:'watchVideo'}
+// 	];
 
-	res.json(tasks);
-});
-//OR ::: 
-
-// app.get ('/api/tasks' , (req,res){
-// 	Task.find(function(err,data){
-// 		if (err){
-// 			console.log(err);
-// 		}
-// 		res.send(data);
-// 	});
+// 	res.json(tasks);
 // });
 
-//server port 
-const port = 3000 ; 
+//OR ::: 
+app.get ('/api/tasks' , (req,res){
+	Task.find(function(err,data){
+		if (err){
+			console.log(err);
+		}
+		res.send(data);
+	});
+});
 
-app.listen(port , ()=> console.log(`Server started on port ${port}`) );
+//server port 
+let port = 3000; 
+
+app.listen(port, function() 
+{
+  console.log(`listening on port ${port}`);
+});
 
 

@@ -11,8 +11,7 @@ class App extends React.Component {
         {
             lists :[]; ///!!!!!
         }
-        this.onChange = this.onChange.bind(this);
-        this.search = this.search.bind(this);
+        
       }
 
       //!!!!!!!!!!!!
@@ -25,58 +24,27 @@ class App extends React.Component {
   }
    search (term) 
   {
-    console.log(`${term} was searched`);
+    console.log(`${term} `);
      //ex. : the LIKE at facebook ,, i dont need to open another page to make it .. 
 
      //what should i pass in the ajax !! 
-    // $.ajax({
-    //   type: 'POST',
-    //   url: '/repos',
-    //   data: {name: term, url: '', private: false},
-    //   success: function (res) 
-    //   {
-    //       console.log('success');
-    //   }
-    // });
+    $.ajax({
+      type: 'POST',
+      url: '/tasks',
+      data: {date: term, day: '', task1: '',task2: '',task3: ''},
+      success: function (res) 
+      {
+          console.log('success');
+      }
+    });
   }
-
 //i need to build my buttons here ::  
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-
-          <img src="https://images.yourstory.com/2016/10/To-do-list.jpg?auto=compress" alt="to do lists">
-
-          <h1 className="App-title">My To Do</h1>
-          <h3>Add New Day List !</h3>
-        <br>
-        <form action="/action_page.php">
-  Date :<br>
-  <input type="text" name="date" value={}>
-  <br>
-  Day :<br>
-  <input type="text" name="day" value={}>
-    <br>
-
-  Task1 :<br>
-  <input type="text" name="task1" value={}>
-  <br>
-
-  Task2 :<br>
-  <input type="text" name="task2" value={}>
-  <br>
-
-  Task3 :<br>
-  <input type="text" name="task3" value={}>
-  <br><br>
-  <input type="submit" value="Submit" >
-</form> 
-
-        </header>
-        <Tasks />
-      </div>
-    );
+    return (<div>
+      <h1>Github Fetcher</h1>
+      <Lists lists={this.state.lists}/>
+      <Search onSearch={this.search.bind(this)}/> 
+    </div>);
   }
 }
 ReactDOM.render(<App />, document.getElementById('app'));
