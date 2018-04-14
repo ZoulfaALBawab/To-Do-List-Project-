@@ -9,7 +9,7 @@ let taskSchema = mongoose.Schema({
    task3 : String
  });
 
-let Task = mongoose.model('Repo', taskSchema);
+let Task = mongoose.model('Task', taskSchema);
 
 let save = (data, callback) => 
 {
@@ -17,7 +17,7 @@ let save = (data, callback) =>
   // the MongoDB
 
  	var task = new Task (data);
- 	repo.save(function(err, dataRes)
+ 	task.save(function(err, dataRes)
  		//either err or dataRers ,, that is why we used the null .. 
  		//.save ,, which is build in function ,, make the insert of the value .. 
  	{
@@ -31,3 +31,4 @@ let save = (data, callback) =>
 }
 
 module.exports.save = save;
+
