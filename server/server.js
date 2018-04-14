@@ -1,6 +1,5 @@
 const express = require('express');
-const app = express();
-
+ 
 // we need to add the libraries .. 
 let bodyParser = require('body-parser');
 // the body of the request that the client send to the server ,, So we need to parse it  
@@ -19,7 +18,7 @@ app.use(bodyParser.json());
 
 
 // To Post new values 
-app.post('/api/tasks' , (req,res){
+app.post('/api/tasks' , function(req,res){
 		db.save(req.body , function(err,data){
 			if (err){
 				console.error(err);
@@ -41,7 +40,7 @@ app.post('/api/tasks' , (req,res){
 // });
 
 //OR ::: 
-app.get ('/api/tasks' , (req,res){
+app.get ('/api/tasks' , function(req,res){
 	Task.find(function(err,data){
 		if (err){
 			console.log(err);

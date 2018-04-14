@@ -9,7 +9,7 @@ class App extends React.Component {
         supre(props);
         this.state=
         {
-            lists :[]; ///!!!!!
+            lists :[] ///!!!!!
         }
         
       }
